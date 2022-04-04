@@ -2,65 +2,73 @@ package java006_A1;
 
 import java.util.Scanner;
 
-import org.w3c.dom.css.Counter;
-
 public class A1_a {
-	Scanner sc = new Scanner(System.in);
-	String[] courseArr = new String[5];
+	public static int count = 0;
+	public static String subject[] = new String[5];
+	static Scanner sc = new Scanner(System.in);
 
-	public void choiceMainMenu() {
-		System.out.println("== Menu ==\n1. Course List\n2. My course");
-		int chooseMainMenu = sc.nextInt();
-		if (chooseMainMenu == 1) {
+	public static void mainMenu() {
+		System.out.println("== Menu == \n1. Course List\n2. My Course");
+		System.out.print("-> ");
+		int menu = sc.nextInt();
+		System.out.println("");
+		if (menu == 1) {
 			courseMenu();
-		} else if (chooseMainMenu == 2) {
+		} else if (menu == 2) {
 			myCourseList();
 		} else {
-			System.out.println("\nError!");
-			choiceMainMenu();
+			System.out.println("Error!");
+			mainMenu();
 		}
 	}
 
-	public void courseMenu() {
-		int chooseCourseMenu = 7;
-		int count = 0;
+	public static void courseMenu() {
+		int chooseCourse = 6;
+		
+		while (chooseCourse != 0) {
+			System.out.println("== Course List ==\n1. Korean\n2. Math\n3. English");
+			System.out.println("4. Social Studies\n5. Science\n0. Back to Main");
+			System.out.print("-> ");
+			chooseCourse = sc.nextInt();
+			System.out.println("");
 
-		while (chooseCourseMenu != 0) {
-			System.out.println(
-					"\n== Course List ==\n1. Korean\n2. Math\n3. English\n4. Social Studies\n5. Science\n0. Back to Main");
-			chooseCourseMenu = sc.nextInt();
-
-			if (chooseCourseMenu == 1) {
-				System.out.println("\n\"Korean\" is registered");
-				courseArr[count] = "Korean";
-			} else if (chooseCourseMenu == 2) {
-				System.out.println("\n\"Math\" is registered");
-				courseArr[count] = "Math";
-			} else if (chooseCourseMenu == 3) {
-				System.out.println("\n\"English\" is registered");
-				courseArr[count] = "English";
-			} else if (chooseCourseMenu == 4) {
-				System.out.println("\n\"Social Studies\" is registered");
-				courseArr[count] = "Social Studies";
-			} else if (chooseCourseMenu == 5) {
-				System.out.println("\n\"Science\" is registered");
-				courseArr[count] = "Science";
-			} else if (chooseCourseMenu == 0) {
-				System.out.println("");
-				choiceMainMenu();
+			if (chooseCourse == 1) {
+				subject[count] = "Korean";
+				System.out.println("\"Korean\" is registered.");
+			} else if (chooseCourse == 2) {
+				subject[count] = "Math";
+				System.out.println("\"Math\" is registered.");
+			} else if (chooseCourse == 3) {
+				subject[count] = "English";
+				System.out.println("\"English\" is registered.");
+			} else if (chooseCourse == 4) {
+				subject[count] = "Social Studies";
+				System.out.println("\"Social Studies\" is registered.");
+			} else if (chooseCourse == 5) {
+				subject[count] = "Science";
+				System.out.println("\"Science\" is registered.");
+			} else if (chooseCourse == 0) {
+				continue;
 			} else {
 				System.out.println("Error!");
+				mainMenu();
 			}
+			System.out.println("");
 			count++;
 		}
+		mainMenu();
 	}
 
-	public void myCourseList() {
-		System.out.println("== My Course ==");
-		for (int i = 0; i <= courseArr.length + 1; i++) {
-			System.out.println(i + 1 + "." + courseArr[i]);
+	public static void myCourseList() {
+		System.out.println("== My Cournse ==");
+		for (int i = 0; i < count; i++) {
+			System.out.println(i + 1 + " " + subject[i]);
 		}
-		System.out.println("==END==");
-
+		System.out.println("- End -");
+		System.out.print("-> ");
+		int next = sc.nextInt();
+		if (next == 0) {
+			mainMenu();
+		} 
 	}
 }

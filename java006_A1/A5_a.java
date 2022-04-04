@@ -3,61 +3,124 @@ package java006_A1;
 import java.util.Scanner;
 
 public class A5_a {
-	static double CENTIMETERS = 100;
-	static double METERS = 1;
-	static double MILLIMETERS = 1000;
-	static double KILOMETERS = 0.001;
-	static double MILES = 0.00062;
+	static Scanner sc = new Scanner(System.in);
+	public static float inputNum = 0, result = 0;
+	public static int beforeUnit = 0, afterUnit = 0;
 
-	public void printMenu() {
-		System.out.println("# Unit \n1. cm\n2. m\n3. mm\n4. km\n5. mile");
+	public static void printMenu() {
+		System.out.println("# Unit");
+		System.out.println("1. cm\n2. m\n3. mm\n4. km\n5. mile");
 	}
 
-	public String[] inputData() {
-		Scanner sc = new Scanner(System.in);
-		String inpuSelects = sc.nextLine();
-		String[] selectArr = inpuSelects.split(" ");
-		return selectArr;
+	public static void inputUnit() {
+		beforeUnit = sc.nextInt();
+		afterUnit = sc.nextInt();
+		
 	}
 
-	public int inputNum() {
-		Scanner sc = new Scanner(System.in);
-		int inputNumber = sc.nextInt();
-		return inputNumber;
+	public static void inputNumber() {
+		System.out.println("Input number");
+		inputNum = sc.nextInt();
 	}
 
-	public void process(String[] selectArr, int inputNumber) {
-		double result = 0;
-		double selectOne = Integer.parseInt(selectArr[0]);
-		double selectTwo = Integer.parseInt(selectArr[1]);
-		if(selectOne == 1) {
-			selectOne = CENTIMETERS;
-		} else if(selectOne == 2) {
-			selectOne = METERS;
-		} else if(selectOne == 3) {
-			selectOne = MILLIMETERS;
-		} else if(selectOne == 4) {
-			selectOne = (int) KILOMETERS;
-		} else if(selectOne == 5) {
-			selectOne = (int) MILES;
+	public static void calUnit() {
+		if (beforeUnit == 1) {
+			cmUnit(afterUnit);
+		} else if (beforeUnit == 2) {
+			mUnit(afterUnit);
+		} else if (beforeUnit == 3) {
+			mmUnit(afterUnit);
+		} else if (beforeUnit == 4) {
+			kmUnit(afterUnit);
+		} else if (beforeUnit == 5) {
+			mileUnit(afterUnit);
+		} else {
+			System.out.println("Wrong Number");
 		}
-		if(selectOne == 1) {
-			selectTwo = CENTIMETERS;
-		} else if(selectOne == 2) {
-			selectTwo = METERS;
-		} else if(selectOne == 3) {
-			selectTwo = MILLIMETERS;
-		} else if(selectOne == 4) {
-			selectTwo = (int) KILOMETERS;
-		} else if(selectOne == 5) {
-			selectTwo = (int) MILES;
-		}
-		double factor = selectOne / selectTwo;
-		result = inputNumber * factor;
-		printResult(result);
 	}
 
-	public void printResult(double result) {
+	public static void cmUnit(int afterUnit) {
+		if (afterUnit == 1) {
+			result = inputNum;
+		} else if (afterUnit == 2) {
+			result = inputNum / 100;
+		} else if (afterUnit == 3) {
+			result = inputNum * 10;
+		} else if (afterUnit == 4) {
+			result = inputNum / 100000;
+		} else if (afterUnit == 5) {
+			result = (float) (inputNum * 6.2137e-6);
+		} else {
+			System.out.println("Wrong Number");
+		}
+	}
+
+	public static void mUnit(int afterUnit) {
+		if (afterUnit == 1) {
+			result = inputNum * 100;
+		} else if (afterUnit == 2) {
+			result = inputNum;
+		} else if (afterUnit == 3) {
+			result = inputNum * 1000;
+		} else if (afterUnit == 4) {
+			result = inputNum / 1000;
+		} else if (afterUnit == 5) {
+			result = (float) (inputNum * 0.000621);
+		} else {
+			System.out.println("Wrong Number");
+		}
+	}
+
+	public static void mmUnit(int afterUnit) {
+		if (afterUnit == 1) {
+			result = inputNum / 10;
+		} else if (afterUnit == 2) {
+			result = inputNum / 1000;
+		} else if (afterUnit == 3) {
+			result = inputNum;
+		} else if (afterUnit == 4) {
+			result = (float) (inputNum * 1e-6);
+		} else if (afterUnit == 5) {
+			result = (float) (inputNum * 6.2137e-7);
+		} else {
+			System.out.println("Wrong Number");
+		}
+	}
+
+	public static void kmUnit(int afterUnit) {
+		if (afterUnit == 1) {
+			result = inputNum * 100000;
+		} else if (afterUnit == 2) {
+			result = inputNum * 1000;
+		} else if (afterUnit == 3) {
+			result = inputNum * 1000000;
+		} else if (afterUnit == 4) {
+			result = inputNum;
+		} else if (afterUnit == 5) {
+			result = (float) (inputNum * 0.621371);
+		} else {
+			System.out.println("Wrong Number");
+		}
+	}
+
+	public static void mileUnit(int afterUnit) {
+		if (afterUnit == 1) {
+			result = (float) (inputNum * 1690934.4);
+		} else if (afterUnit == 2) {
+			result = (float) (inputNum * 1609.344);
+		} else if (afterUnit == 3) {
+			result = inputNum * 1609344;
+		} else if (afterUnit == 4) {
+			result = (float) (inputNum * 1.609344);
+		} else if (afterUnit == 5) {
+			result = inputNum;
+		} else {
+			System.out.println("Wrong Number");
+		}
+	}
+
+	public static void printResult() {
 		System.out.println(result);
 	}
 }
+
