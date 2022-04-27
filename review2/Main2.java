@@ -18,6 +18,6 @@ public class Main2 {
 		int iAge = (strOne - strTwo) / 10000;
 		
 		System.out.println(kAge + " years old in Korean age");
-		System.out.println(iAge + " tears old in international age");
+		System.out.println(iAge + " years old in international age");
 	}
 }

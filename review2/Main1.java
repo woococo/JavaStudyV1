@@ -8,19 +8,28 @@ public class Main1 {
 		// TODO Auto-generated method stub
 
 		Scanner sc = new Scanner(System.in);
-		
+
 		String strOne = sc.next();
 		String strTwo = sc.next();
 		String strThree = sc.next();
-		
+
 		char[] oneArr = strOne.toCharArray();
 		char[] twoArr = strTwo.toCharArray();
-		char[] threeArr = strTwo.toCharArray();
-		
-		if (oneArr[2] == twoArr[2] && threeArr[2] == twoArr[2] ) {
-			System.out.println("Pass");
+		char[] threeArr = strThree.toCharArray();
+		String result = "";
+
+		if (strOne.equals("0000") || strTwo.equals("0000") || strThree.equals("0000")) {
+			result = "Pass";
 		} else {
-			System.out.println("Fail");
+			for (int i = 0; i < 4; i++) {
+				if (oneArr[i] == twoArr[i] && twoArr[i] == threeArr[i] && threeArr[i] == '0') {
+					result = "Pass";
+					break;
+				} else {
+					result = "Fail";
+				}
+			}
 		}
+		System.out.println(result);
 	}
 }

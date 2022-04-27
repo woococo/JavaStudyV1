@@ -28,14 +28,10 @@ public class Main1 {
 			}
 		}
 
-		System.out.println(strOne);
-		System.out.println(strTwo);
-
 		if (oneArr.length == cnt) {
 			System.out.println("Yes");
 		} else {
 			System.out.println("No");
 		}
-
 	}
 }
